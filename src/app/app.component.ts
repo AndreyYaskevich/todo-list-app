@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Guid } from 'guid-typescript';
+import Todo from './models/Todo.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo-list-app';
+  todos: Todo[] = [];
+
+  addTodo(description: string) {
+    this.todos.push(new Todo(Guid.create(), description))
+  }
 }
